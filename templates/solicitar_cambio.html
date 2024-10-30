@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+
+{% block title %}Solicitar Cambio{% endblock %}
+
+{% block content %}
+<div class="solicitar-cambio">
+    <h2>Solicitar Cambio en el Proyecto</h2>
+    
+    <form method="POST" enctype="multipart/form-data">
+        <div>
+            <label for="descripcion">Descripción del Cambio:</label>
+            <textarea name="descripcion" required></textarea>
+        </div>
+        
+        <div>
+            <label for="archivo">Subir Archivo:</label>
+            <input type="file" name="archivo" required>
+        </div>
+        
+        <button type="submit" class="btn">Solicitar Cambio</button>
+    </form>
+</div>
+{% endblock %}

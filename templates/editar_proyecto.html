@@ -1,0 +1,42 @@
+{% extends 'layout.html' %}
+
+{% block title %}Editar Proyecto{% endblock %}
+
+{% block content %}
+<div class="register-form">
+    <h2>Editar Proyecto</h2>
+    <form method="POST" action="{{ url_for('editar_proyecto', id=proyecto[0]) }}">
+        <div class="form-group">
+            <label for="nombre">Nombre del Proyecto:</label>
+            <input type="text" name="nombre" id="nombre" value="{{ proyecto[1] }}" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="descripcion">Descripción:</label>
+            <textarea name="descripcion" id="descripcion" required>{{ proyecto[2] }}</textarea>
+        </div>
+        
+        <div class="form-group">
+            <label for="fechainicio">Fecha de Inicio:</label>
+            <input type="date" name="fechainicio" id="fechainicio" value="{{ fechainicio }}" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="fechafin">Fecha de Fin:</label>
+            <input type="date" name="fechafin" id="fechafin" value="{{ fechafin }}" required>
+        </div>
+        
+        
+        <div class="form-group">
+            <label for="estado">Estado del Proyecto:</label>
+            <select name="estado" id="estado" required>
+                <option value="Activo" {% if proyecto[5] == 'Activo' %}selected{% endif %}>Activo</option>
+                <option value="Inactivo" {% if proyecto[5] == 'Inactivo' %}selected{% endif %}>Inactivo</option>
+            </select>
+        </div>
+        
+        
+        <button type="submit">Guardar Cambios</button>
+    </form>
+</div>
+{% endblock %}

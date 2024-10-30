@@ -1,0 +1,72 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f9fc;
+    margin: 0;
+    padding: 0;
+}
+
+h2 {
+    font-size: 24px;
+    text-align: center;
+    margin-top: 20px;
+    color: #333;
+}
+
+h3 {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+/* Sección de notificaciones */
+.notificaciones {
+    background-color: #fff;
+    border-radius: 8px;
+    margin: 20px auto;
+    padding: 20px;
+    width: 80%;
+    max-width: 800px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    font-size: 16px;
+    color: #333;
+}
+
+li:last-child {
+    border-bottom: none;
+}
+
+/* Tareas próximas a vencer */
+.notificaciones h3:first-of-type {
+    color: #f39c12; /* Color naranja para tareas próximas a vencer */
+}
+
+.notificaciones ul:first-of-type li {
+    background-color: #fff5e1; /* Fondo suave para próximas tareas */
+}
+
+/* Tareas retrasadas */
+.notificaciones h3:last-of-type {
+    color: #e74c3c; /* Color rojo para tareas retrasadas */
+}
+
+.notificaciones ul:last-of-type li {
+    background-color: #fce4e4; /* Fondo suave para tareas retrasadas */
+}
+
+/* Mensaje cuando no hay tareas */
+li.empty-message {
+    text-align: center;
+    font-style: italic;
+    color: #999;
+}

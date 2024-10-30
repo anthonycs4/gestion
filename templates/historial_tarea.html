@@ -1,0 +1,35 @@
+{% extends 'layout.html' %}
+
+{% block title %}Historial de la Tarea{% endblock %}
+
+{% block content %}
+<div class="history-section">
+    <h2>Historial de la Tarea</h2>
+
+    <!-- Tabla del historial de cambios -->
+    <table class="history-table">
+        <thead>
+            <tr>
+                <th>Fecha</th>
+                <th>Estado Anterior</th>
+                <th>Estado Nuevo</th>
+                <th>Modificado por</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for cambio in historial %}
+            <tr>
+                <td>{{ cambio[0] }}</td> <!-- Fecha del cambio -->
+                <td>{{ cambio[1] }}</td> <!-- Estado anterior -->
+                <td>{{ cambio[2] }}</td> <!-- Estado nuevo -->
+                <td>{{ cambio[3] }}</td> <!-- Usuario que realizó el cambio -->
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="4">No se encontraron cambios</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

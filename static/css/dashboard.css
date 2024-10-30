@@ -1,0 +1,574 @@
+/* General styling */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    box-sizing: border-box;
+    background-color: #f8f9fa;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 200px;
+    background-color: #2c3e50;
+    height: 100vh;
+    color: white;
+    position: fixed;
+    padding-top: 20px;
+}
+
+.sidebar h2 {
+    color: white;
+    text-align: center;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar ul li {
+    padding: 15px;
+    text-align: center;
+}
+
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+}
+
+.sidebar ul li.active, .sidebar ul li:hover {
+    background-color: #34495e;
+}
+
+/* Main Content */
+.main-content {
+    margin-left: 200px;
+    padding: 20px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.stats {
+    display: flex;
+    gap: 20px;
+}
+
+.stat-box {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.stat-box h3 {
+    margin: 0;
+    font-size: 16px;
+    color: #7f8c8d;
+}
+
+.stat-box p {
+    margin: 0;
+    font-size: 24px;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+}
+
+.user-icon {
+    width: 40px;
+    height: 40px;
+    background-color: #34495e;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+/* Projects Section */
+.projects-section {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.projects-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.projects-header h2 {
+    margin: 0;
+    font-size: 24px;
+    color: #2c3e50;
+}
+
+.create-btn {
+    background-color: #3498db;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.create-btn:hover {
+    background-color: #2980b9;
+}
+
+/* Projects Table */
+.projects-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.projects-table th, .projects-table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.projects-table th {
+    background-color: #ecf0f1;
+    color: #7f8c8d;
+}
+
+.projects-table td {
+    color: #2c3e50;
+}
+
+.projects-table .edit-btn, .projects-table .toggle-btn {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.projects-table .toggle-btn {
+    background-color: #e74c3c;
+}
+
+.projects-table .edit-btn:hover {
+    background-color: #2980b9;
+}
+
+.projects-table .toggle-btn:hover {
+    background-color: #c0392b;
+}
+
+/* Pagination */
+.pagination {
+    text-align: right;
+    margin-top: 20px;
+}
+
+.pagination a {
+    color: #3498db;
+    padding: 8px 16px;
+    text-decoration: none;
+    border: 1px solid #ddd;
+    margin: 0 5px;
+}
+
+.pagination a.active {
+    background-color: #3498db;
+    color: white;
+}
+
+.pagination a:hover {
+    background-color: #2980b9;
+    color: white;
+}
+/* Estilo para el botón de dropdown */
+.dropbtn {
+    background-color: #3498db;
+    color: white;
+    padding: 10px;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+}
+
+/* Contenedor del dropdown */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Contenido del dropdown (oculto por defecto) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+/* Links dentro del dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Cambiar color al hacer hover sobre los links */
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+/* Mostrar el dropdown al hacer hover sobre el botón */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Cambiar el color del botón al hacer hover */
+.dropdown:hover .dropbtn {
+    background-color: #2980b9;
+}
+/* CSS para la página de Gestión de Configuración */
+.config-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f7f7f7;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 28px;
+}
+
+/* Botón para subir nueva versión */
+.upload-btn {
+    display: block;
+    width: 200px;
+    margin: 20px auto;
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    text-align: center;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.upload-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Tabla de versiones */
+.versions-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.versions-table th, .versions-table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.versions-table th {
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+}
+
+.versions-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Botones de acción en cada fila */
+.versions-table .btn {
+    padding: 8px 12px;
+    background-color: #28a745;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.versions-table .btn:hover {
+    background-color: #218838;
+}
+
+.versions-table .btn:first-child {
+    background-color: #007bff;
+}
+
+.versions-table .btn:first-child:hover {
+    background-color: #0056b3;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    .config-section {
+        padding: 10px;
+    }
+
+    .upload-btn {
+        width: 100%;
+    }
+
+    .versions-table th, .versions-table td {
+        padding: 10px;
+        font-size: 14px;
+    }
+}
+.informes-section {
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 900px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.informes-section h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+}
+
+.informes-section form {
+    margin-bottom: 30px;
+}
+
+.informes-section label {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+.informes-section select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    background-color: #fff;
+}
+
+.informes-section button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.informes-section button:hover {
+    background-color: #0056b3;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+table thead {
+    background-color: #007bff;
+    color: white;
+}
+
+table th, table td {
+    padding: 12px 15px;
+    text-align: left;
+    border: 1px solid #ddd;
+    font-size: 14px;
+}
+
+table th {
+    font-size: 16px;
+    text-transform: uppercase;
+}
+
+table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+table tr:hover {
+    background-color: #f1f1f1;
+}
+
+table td a {
+    color: #007bff;
+    text-decoration: none;
+    padding: 8px 12px;
+    border: 1px solid #007bff;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+table td a:hover {
+    background-color: #007bff;
+    color: white;
+}
+.solicitudes-cambio table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.solicitudes-cambio th, .solicitudes-cambio td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.solicitudes-cambio th {
+    background-color: #f2f2f2;
+}
+
+.solicitar-cambio {
+    margin: 20px 0;
+}
+
+.solicitar-cambio form div {
+    margin-bottom: 15px;
+}
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    color: #fff;
+    background-color: #007bff; /* Azul primario */
+    border: none;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: #007bff; /* Azul primario */
+}
+
+.btn-primary:hover {
+    background-color: #0056b3; /* Azul oscuro al hacer hover */
+}
+
+.btn-primary:active {
+    background-color: #004085;
+    box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+}
+
+.btn-primary:focus {
+    outline: none;
+    box-shadow: 0 0 5px #007bff;
+}
+.tasks-table, .history-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 18px;
+    text-align: left;
+}
+
+.tasks-table th, .history-table th, 
+.tasks-table td, .history-table td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+}
+
+.tasks-table th, .history-table th {
+    background-color: #f4f4f4;
+}
+
+.tasks-table tr:nth-child(even), .history-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.tasks-table tr:hover, .history-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+.btn {
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+.btn-primary {
+    background-color: #007bff;
+}
+
+.btn-info {
+    background-color: #17a2b8;
+}
+.perfil-section {
+    width: 50%;
+    margin: auto;
+}
+
+.perfil-section label {
+    display: block;
+    margin-top: 10px;
+}
+
+.perfil-section input, .perfil-section select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.mensaje {
+    margin-top: 20px;
+    color: green;
+}

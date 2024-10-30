@@ -1,0 +1,13 @@
+{% extends 'layout.html' %}
+
+{% block title %}Comparar Versiones{% endblock %}
+
+{% block content %}
+<div class="comparison-section">
+    <h2>Comparación de Versiones</h2>
+    <div class="diff-container">
+        {{ diferencias|safe }}
+    </div>
+</div>
+
+{% endblock %}

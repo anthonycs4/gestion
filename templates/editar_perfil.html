@@ -1,0 +1,42 @@
+{% extends 'layout.html' %}
+
+{% block title %}Configuración de Perfil{% endblock %}
+
+{% block content %}
+<div class="perfil-section">
+    <h2>Configurar Perfil de Usuario</h2>
+
+    <!-- Formulario para actualizar el perfil -->
+    <form method="POST" action="{{ url_for('editar_perfil') }}" enctype="multipart/form-data">
+        <div>
+            <label for="nombre">Nombre:</label>
+            <input type="text" name="nombre" value="{{ usuario['nombre'] }}" required>
+        </div>
+
+        <div>
+            <label for="correo">Correo:</label>
+            <input type="email" name="correo" value="{{ usuario['correo'] }}" required>
+        </div>
+
+        <div>
+            <label for="imagen_perfil">Imagen de Perfil:</label>
+            <input type="file" name="imagen_perfil">
+        </div>
+
+        <div>
+            <label for="notificaciones">Preferencias de Notificaciones:</label>
+            <select name="notificaciones">
+                <option value="habilitadas" {% if usuario['notificaciones'] == 'habilitadas' %}selected{% endif %}>Habilitadas</option>
+                <option value="deshabilitadas" {% if usuario['notificaciones'] == 'deshabilitadas' %}selected{% endif %}>Deshabilitadas</option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+    </form>
+
+    <!-- Mensaje de confirmación -->
+    {% if mensaje %}
+    <p class="mensaje">{{ mensaje }}</p>
+    {% endif %}
+</div>
+{% endblock %}

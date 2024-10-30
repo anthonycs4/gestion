@@ -1,0 +1,62 @@
+{% extends 'layout.html' %}
+
+{% block title %}Gestión de Configuración{% endblock %}
+
+{% block content %}
+<div class="config-section">
+    <h2>Gestión de Configuración - Proyecto {{ id_proyecto }}</h2>
+
+    <!-- Botón para subir una nueva versión -->
+    <button class="upload-btn" onclick="window.location.href='{{ url_for('subir_version', id=id_proyecto) }}'">Subir Nueva Versión</button>
+
+    <!-- Tabla de versiones existentes -->
+    <table class="versions-table">
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Nombre</th>
+                <th>Tipo</th>
+                <th>Fecha de Subida</th>
+                <th>Descripción</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for version in versiones %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ version[1] }}</td> <!-- Nombre -->
+                <td>{{ version[2] }}</td> <!-- Tipo (Documento, Código, etc.) -->
+                <td>{{ version[3] }}</td> <!-- Fecha de Subida -->
+                <td>{{ version[4] }}</td> <!-- Descripción -->
+                <td>
+                    <a href="{{ url_for('descargar_version', ruta=version[5]) }}" class="btn">Descargar</a>
+                    <a href="{{ url_for('restaurar_version', id_version=version[0], id_proyecto=id_proyecto) }}" class="btn">Restaurar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Formulario para seleccionar versiones a comparar -->
+    <h3>Comparar Versiones</h3>
+    <form action="{{ url_for('comparar_versiones', id=id_proyecto) }}" method="GET">
+        <label for="version_1">Versión 1:</label>
+        <select name="id_version_1" required>
+            {% for version in versiones %}
+                <option value="{{ version[0] }}">{{ version[1] }} - {{ version[3] }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="version_2">Versión 2:</label>
+        <select name="id_version_2" required>
+            {% for version in versiones %}
+                <option value="{{ version[0] }}">{{ version[1] }} - {{ version[3] }}</option>
+            {% endfor %}
+        </select>
+
+        <button type="submit" class="compare-btn">Comparar Versiones</button>
+    </form>
+</div>
+
+{% endblock %}

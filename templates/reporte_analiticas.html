@@ -1,0 +1,45 @@
+{% extends 'layout.html' %}
+
+{% block title %}Reporte de Analíticas{% endblock %}
+
+{% block content %}
+<div class="report-section">
+    <h2>Reporte de Analíticas del Proyecto</h2>
+
+    <!-- Gráfico de transiciones -->
+    <div class="chart-container">
+        <img src="data:image/png;base64,{{ img_url }}" alt="Gráfico de Transiciones de Estado">
+    </div>
+
+    <!-- Tabla de transiciones -->
+    <h3>Historial de Transiciones de Tareas</h3>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Nombre de la Tarea</th>
+                <th>Estado Anterior</th>
+                <th>Estado Nuevo</th>
+                <th>Fecha de Transición</th>
+                <th>Responsable</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for transicion in transiciones %}
+            <tr>
+                <td>{{ transicion[0] }}</td>
+                <td>{{ transicion[1] }}</td>
+                <td>{{ transicion[2] }}</td>
+                <td>{{ transicion[3] }}</td>
+                <td>{{ transicion[4] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Botones para exportar el reporte -->
+    <div class="export-buttons">
+        <a href="{{ url_for('exportar_reporteanaliticas_pdf', id_proyecto=id_proyecto) }}" class="btn btn-primary">Exportar PDF</a>
+        <a href="{{ url_for('exportar_reporte_excel', id_proyecto=id_proyecto) }}" class="btn btn-secondary">Exportar Excel</a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Register</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="form-container">
+            <div class="form-toggle">
+                <button id="toggleBtn" onclick="toggleForms()">Go to Register</button>
+            </div>
+
+            <!-- Login Form -->
+            <div id="loginForm" class="form active">
+                <div class="image-container">
+                    <!-- Aquí colocarás tu imagen -->
+                    <img src="{{ url_for('static', filename='img/your_login_image.png') }}" alt="Login Image">
+                </div>
+                <div class="form-content">
+                    <h2>Ingresar</h2>
+                    <!-- Formulario de Login -->
+                    <form action="{{ url_for('login') }}" method="POST">
+                        <input type="email" name="email" placeholder="Email" required>
+                        <input type="password" name="password" placeholder="Contraseña" required>
+                        <button type="submit" class="btn">Ingresar</button>
+                        <p>¿No tienes una cuenta? <a href="#" onclick="toggleForms()">Registrarse</a></p>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Register Form -->
+            <div id="registerForm" class="form hidden">
+                <div class="form-content">
+                    <h2>Crear tu cuenta gratis</h2>
+                    <!-- Formulario de Registro -->
+                    <form action="{{ url_for('register') }}" method="POST">
+                        <input type="text" name="nombre" placeholder="Nombre" required>
+                        <input type="email" name="email" placeholder="Email" required>
+                        <input type="password" name="password" placeholder="Contraseña" required>
+                        <button type="submit" class="btn">Crear Cuenta</button>
+                        <p>¿Ya tienes una cuenta? <a href="#" onclick="toggleForms()">Ingresar</a></p>
+                    </form>
+                </div>
+                <div class="image-container">
+                    <!-- Aquí colocarás tu imagen -->
+                    <img src="{{ url_for('static', filename='img/your_register_image.png') }}" alt="Register Image">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

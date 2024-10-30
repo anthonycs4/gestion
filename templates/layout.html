@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Dashboard{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/notificaciones.css') }}">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/register_user.css') }}">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h2>Proyectos</h2>
+            </div>
+            <ul>
+                <li><a href="{{ url_for('register_user') }}">Registro Usuario</a></li> <!-- Cambiar la ruta -->
+                <li class="active"><a href="{{ url_for('dashboard') }}">Proyectos</a></li>
+                <li><a href="{{ url_for('notificaciones') }}">Notificaciones</a></li> <!-- Enlace a notificaciones -->
+                <li><a href="{{ url_for('gestionar_informes') }}">Informes de Estado</a></li>
+
+
+            </ul>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="header">
+                <div class="stats">
+                    <div class="stat-box">
+                        <h3>Proyectos</h3>
+                        <p>{{ proyectos|length }}</p> <!-- Muestra el total de proyectos -->
+                    </div>
+                    <div class="stat-box">
+                        <h3>Activos</h3>
+                        <p>{{ activos }}</p> <!-- Muestra el total de proyectos activos -->
+                    </div>
+                    <div class="stat-box">
+                        <h3>Inactivos</h3>
+                        <p>{{ inactivos }}</p> <!-- Muestra el total de proyectos inactivos -->
+                    </div>
+                </div>
+                <div class="profile">
+                    <a href="{{ url_for('editar_perfil') }}"><span class="user-icon"></span></a>
+                </div>
+            </div>
+
+            <!-- Bloque para contenido específico de la página -->
+            <div class="projects-section">
+                {% block content %}
+                <!-- Este es el lugar donde el contenido específico de cada página irá -->
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>

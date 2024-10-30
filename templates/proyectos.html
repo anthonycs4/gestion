@@ -1,0 +1,61 @@
+{% extends 'layout.html' %}
+
+{% block title %}Gestión de Proyectos{% endblock %}
+
+{% block content %}
+<div class="projects-section">
+    <h2>Gestión de Proyectos</h2>
+
+    <!-- Botón para crear un nuevo proyecto -->
+    <button class="create-btn" onclick="window.location.href='{{ url_for('crear_proyecto') }}'">Crear Proyecto</button>
+
+    <!-- Tabla de Proyectos Existentes -->
+    <table class="projects-table">
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Fecha de Inicio</th>
+                <th>Fecha de Fin</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for proyecto in proyectos %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ proyecto[1] }}</td> <!-- Nombre del proyecto -->
+                <td>{{ proyecto[4] }}</td> <!-- Descripción del proyecto -->
+                <td>{{ proyecto[2] }}</td> <!-- Fecha de inicio -->
+                <td>{{ proyecto[3] }}</td> <!-- Fecha de fin -->
+                <td>{{ proyecto[5] }}</td> <!-- Estado (Activo/Inactivo) -->
+                <td>
+                    <!-- Menú de acciones -->
+                    <div class="dropdown">
+                        <button class="dropbtn">Elegir</button>
+                        <div class="dropdown-content">
+                            <a href="{{ url_for('editar_proyecto', id=proyecto[0]) }}">Editar</a>
+                            <a href="{{ url_for('deshabilitar_proyecto', id=proyecto[0]) }}">
+                                {{ 'Deshabilitar' if proyecto[5] == 'Activo' else 'Habilitar' }}
+                            </a>
+                            <a href="{{ url_for('ver_tareas', id=proyecto[0]) }}">Tareas</a>
+                            <a href="{{ url_for('ver_miembros', id=proyecto[0]) }}">Gestionar Miembros</a>
+                            <a href="{{ url_for('configurar_metodologia', id=proyecto[0]) }}">Configurar Metodología</a>
+                            <a href="{{ url_for('ver_configuracion', id=proyecto[0]) }}">Gestión de Configuración</a>
+                            <a href="{{ url_for('ver_solicitudes_cambio', id_proyecto=proyecto[0]) }}" ">Gestionar Cambios</a>
+                            <a href="{{ url_for('ver_flujo_tareas', id_proyecto=proyecto[0]) }}" >Ver Flujo de Tareas</a>
+                            <a href="{{ url_for('reporte_analiticas', id_proyecto=proyecto[0]) }}" >Ver Reporte de Analíticas</a>
+
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        
+    </table>
+</div>
+
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'layout.html' %}
+
+{% block title %}Crear Proyecto{% endblock %}
+
+{% block content %}
+<div class="register-form">
+    <h2>Crear Nuevo Proyecto</h2>
+    <form method="POST" action="{{ url_for('crear_proyecto') }}">
+        <div class="form-group">
+            <label for="nombre">Nombre del Proyecto:</label>
+            <input type="text" name="nombre" id="nombre" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="descripcion">Descripción:</label>
+            <textarea name="descripcion" id="descripcion" required></textarea>
+        </div>
+        
+        <div class="form-group">
+            <label for="fechainicio">Fecha de Inicio:</label>
+            <input type="date" name="fechainicio" id="fechainicio" required>
+        </div>
+
+        <div class="form-group">
+            <label for="fechafin">Fecha de Fin:</label>
+            <input type="date" name="fechafin" id="fechafin" required>
+        </div>
+        <div class="form-group">
+            <label for="estado">Estado del Proyecto:</label>
+            <select name="estado" id="estado" required>
+                <option value="Activo">Activo</option>
+                <option value="Inactivo">Inactivo</option>
+            </select>
+        </div>
+        
+        <button type="submit">Crear Proyecto</button>
+    </form>
+</div>
+{% endblock %}

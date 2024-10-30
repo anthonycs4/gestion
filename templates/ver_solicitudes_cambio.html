@@ -1,0 +1,45 @@
+{% extends 'layout.html' %}
+
+{% block title %}Revisar Solicitudes de Cambio{% endblock %}
+
+{% block content %}
+<div class="solicitudes-cambio">
+    <h2>Solicitudes de Cambio</h2>
+    <a href="{{ url_for('solicitar_cambio', id_proyecto=id_proyecto) }}" class="btn btn-primary">Solicitar Cambio</a>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Descripción</th>
+                <th>Usuario</th>
+                <th>Estado</th>
+                <th>Fecha de Solicitud</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for solicitud in solicitudes %}
+            <tr>
+                <td>{{ solicitud[0] }}</td> <!-- ID -->
+                <td>{{ solicitud[1] }}</td> <!-- Descripción -->
+                <td>{{ solicitud[4] }}</td> <!-- Usuario -->
+                <td>{{ solicitud[2] }}</td> <!-- Estado -->
+                <td>{{ solicitud[3] }}</td> <!-- Fecha de solicitud -->
+                <td>
+                    {% if solicitud[2] == 'Pendiente' %}
+    <form method="POST" action="{{ url_for('revisar_cambio', id_proyecto=id_proyecto, id_cambio=solicitud[0]) }}">
+        <button type="submit" name="accion" value="Aprobar" class="btn btn-success">Aprobar</button>
+        <button type="submit" name="accion" value="Rechazar" class="btn btn-danger">Rechazar</button>
+    </form>
+{% else %}
+    <p></p>
+{% endif %}
+
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'layout.html' %}
+
+{% block title %}Configurar Metodología{% endblock %}
+
+{% block content %}
+<div class="config-metodologia-section">
+    <h2>Configurar Metodología para el Proyecto: {{ proyecto[1] }}</h2>
+    
+    <form method="POST" action="{{ url_for('configurar_metodologia', id=proyecto[0]) }}">
+        <div class="form-group">
+            <label for="metodologia">Selecciona una Metodología:</label>
+            <select name="metodologia" id="metodologia" required>
+                {% for metodologia in metodologias %}
+                    <option value="{{ metodologia[0] }}" {% if metodologia[0] == proyecto[6] %}selected{% endif %}>{{ metodologia[1] }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <button type="submit">Guardar Metodología</button>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,72 @@
+{% extends 'layout.html' %}
+
+{% block title %}Gestión de Informes{% endblock %}
+
+{% block content %}
+<div class="informes-section">
+    <h2>Generar y Visualizar Informes de Estado</h2>
+
+    <!-- Formulario para generar un nuevo informe -->
+    <form method="POST" action="{{ url_for('generar_informe') }}">
+        <div>
+            <label for="proyecto">Seleccione un Proyecto:</label>
+            <select name="proyecto" required>
+                <option value="">Seleccione un proyecto</option>
+                {% for proyecto in proyectos %}
+                <option value="{{ proyecto[0] }}">{{ proyecto[1] }}</option>
+                {% endfor %}
+            </select>
+        </div>
+    
+        <div>
+            <label for="periodo">Seleccione el Periodo:</label>
+            <select name="periodo" required>
+                <option value="semanal">Semanal</option>
+                <option value="mensual">Mensual</option>
+                <option value="trimestral">Trimestral</option>
+            </select>
+        </div>
+    
+        <button type="submit" class="btn btn-primary">Generar Informe</button>
+    </form>
+    
+
+    <!-- Lista de informes existentes -->
+    <!-- Lista de informes generados -->
+<!-- Lista de informes generados -->
+<!-- Lista de informes generados -->
+<h3>Informes Generados</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Proyecto</th>
+            <th>Periodo</th>
+            <th>Fecha de Generación</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if informes %}
+            {% for informe in informes %}
+            <tr>
+                <td>{{ informe[1] }}</td> <!-- Nombre del proyecto -->
+                <td>{{ informe[2] }}</td> <!-- Periodo -->
+                <td>{{ informe[3] }}</td> <!-- Fecha de generación -->
+                <td>
+                    <a href="{{ url_for('ver_informe', id_informe=informe[0]) }}">Ver Informe</a>
+                    <a href="{{ url_for('exportar_informe_pdf', id_informe=informe[0]) }}">Exportar PDF</a>
+                </td>
+            </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td colspan="4">No se encontraron informes</td>
+            </tr>
+        {% endif %}
+    </tbody>
+</table>
+
+
+    
+</div>
+{% endblock %}

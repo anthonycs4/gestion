@@ -1,0 +1,67 @@
+{% extends 'layout.html' %}
+
+{% block title %}Tareas del Proyecto{% endblock %}
+
+{% block content %}
+<div class="tareas-section">
+    <h2>Gestión de Tareas</h2>
+
+    <!-- Formulario para crear una nueva tarea -->
+    <form method="POST" action="{{ url_for('crear_tarea', id=id_proyecto) }}">
+        <div class="form-group">
+            <label for="nombre">Nombre de la Tarea:</label>
+            <input type="text" name="nombre" required>
+        </div>
+        <div class="form-group">
+            <label for="descripcion">Descripción:</label>
+            <textarea name="descripcion" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="fecha_inicio">Fecha de Inicio:</label>
+            <input type="date" name="fecha_inicio" required>
+        </div>
+        <div class="form-group">
+            <label for="fecha_fin">Fecha de Fin:</label>
+            <input type="date" name="fecha_fin" required>
+        </div>
+        <div class="form-group">
+            <label for="asignado_a">Asignado a:</label>
+            <select name="asignado_a" required>
+                {% for usuario in usuarios %}
+                    <option value="{{ usuario[0] }}">{{ usuario[1] }} {{ usuario[2] }}</option> <!-- usuario[0] es el id, usuario[1] es el nombre, usuario[2] es el apellido -->
+                {% endfor %}
+            </select>
+            
+            
+        </div>
+        <button type="submit">Crear Tarea</button>
+    </form>
+
+    <!-- Lista de tareas existentes -->
+    <h3>Tareas del Proyecto</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Fecha de Inicio</th>
+                <th>Fecha de Fin</th>
+                <th>Asignado a</th>
+                <th>Estado</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for tarea in tareas %}
+            <tr>
+                <td>{{ tarea[1] }}</td> <!-- Nombre -->
+                <td>{{ tarea[2] }}</td> <!-- Descripción -->
+                <td>{{ tarea[3] }}</td> <!-- Fecha de Inicio -->
+                <td>{{ tarea[4] }}</td> <!-- Fecha de Fin -->
+                <td>{{ tarea[6] }}</td> <!-- Asignado a -->
+                <td>{{ tarea[5] }}</td> <!-- Estado -->
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

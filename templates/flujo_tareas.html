@@ -1,0 +1,54 @@
+{% extends 'layout.html' %}
+
+{% block title %}Flujo de Tareas{% endblock %}
+
+{% block content %}
+<div class="tasks-section">
+    <h2>Flujo de Tareas del Proyecto</h2>
+
+    <!-- Tabla de tareas -->
+    <table class="tasks-table table table-bordered table-hover">
+        <thead class="thead-light">
+            <tr>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Fecha de Inicio</th>
+                <th>Fecha de Fin</th>
+                <th>Estado</th>
+                <th>Responsable</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for tarea in tareas %}
+            <tr>
+                <td>{{ tarea[1] }}</td> <!-- Nombre de la tarea -->
+                <td>{{ tarea[2] }}</td> <!-- Descripción de la tarea -->
+                <td>{{ tarea[3] }}</td> <!-- Fecha de inicio -->
+                <td>{{ tarea[4] }}</td> <!-- Fecha de fin -->
+                <td>{{ tarea[5] }}</td> <!-- Estado (Pendiente/En progreso/Completada) -->
+                <td>{{ tarea[6] }}</td> <!-- Responsable de la tarea -->
+                <td>
+                    <!-- Botón para ver el historial -->
+                    <a href="{{ url_for('ver_historial_tarea', id_proyecto=id_proyecto, id_tarea=tarea[0]) }}" class="btn btn-info btn-sm mb-1">Ver Historial</a>
+
+                    <!-- Formulario para actualizar el estado de la tarea -->
+                    <form method="POST" action="{{ url_for('actualizar_estado_tarea', id_proyecto=id_proyecto, id_tarea=tarea[0]) }}" class="d-inline">
+                        <select name="estado" class="form-control form-control-sm d-inline-block w-auto mb-1">
+                            <option value="Pendiente" {% if tarea[5] == 'Pendiente' %}selected{% endif %}>Pendiente</option>
+                            <option value="En progreso" {% if tarea[5] == 'En progreso' %}selected{% endif %}>En progreso</option>
+                            <option value="Completada" {% if tarea[5] == 'Completada' %}selected{% endif %}>Completada</option>
+                        </select>
+                        <button type="submit" class="btn btn-primary btn-sm">Actualizar Estado</button>
+                    </form>
+                </td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="7" class="text-center">No hay tareas disponibles</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

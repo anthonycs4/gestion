@@ -1,0 +1,17 @@
+{% extends 'layout.html' %}
+
+{% block title %}Informe de Estado{% endblock %}
+
+{% block content %}
+<div class="informe-section">
+    <h2>Informe de Estado - {{ informe[2] }}</h2>
+
+    <p><strong>Periodo:</strong> {{ informe[3] }}</p>
+    <p><strong>Fecha de Generación:</strong> {{ informe[4] }}</p>
+    <h3>Avance General</h3>
+    <p>{{ informe[0] }}</p>
+
+    <h3>Problemas Identificados</h3>
+    <p>{{ informe[1] }}</p>
+</div>
+{% endblock %}

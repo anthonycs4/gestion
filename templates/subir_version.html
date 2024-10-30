@@ -1,0 +1,36 @@
+{% extends 'layout.html' %}
+
+{% block title %}Subir Nueva Versión{% endblock %}
+
+{% block content %}
+<div class="upload-section">
+    <h2>Subir Nueva Versión</h2>
+
+    <form method="POST" enctype="multipart/form-data" action="{{ url_for('subir_version', id=id_proyecto) }}">
+        <div class="form-group">
+            <label for="nombre">Nombre del Archivo:</label>
+            <input type="text" name="nombre" id="nombre" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="tipo">Tipo de Archivo:</label>
+            <select name="tipo" id="tipo" required>
+                <option value="Documento">Documento</option>
+                <option value="Código">Código Fuente</option>
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label for="descripcion">Descripción:</label>
+            <textarea name="descripcion" id="descripcion" required></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="archivo">Subir Archivo:</label>
+            <input type="file" name="archivo" id="archivo" required>
+        </div>
+
+        <button type="submit">Subir Versión</button>
+    </form>
+</div>
+{% endblock %}

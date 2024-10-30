@@ -1,0 +1,32 @@
+{% extends 'layout.html' %}
+
+{% block title %}Notificaciones de Tareas{% endblock %}
+
+{% block content %}
+<h2>Notificaciones</h2>
+
+<!-- Tareas Próximas -->
+<div class="notificaciones">
+    <h3>Tareas próximas a vencer:</h3>
+    <ul>
+        {% for tarea in tareas_proximas %}
+            <li>{{ tarea[1] }} - Fecha de fin: {{ tarea[4] }}</li>
+        {% else %}
+            <li>No hay tareas próximas a vencer.</li>
+        {% endfor %}
+    </ul>
+</div>
+
+<!-- Tareas Retrasadas -->
+<div class="notificaciones">
+    <h3>Tareas retrasadas:</h3>
+    <ul>
+        {% for tarea in tareas_retrasadas %}
+            <li>{{ tarea[1] }} - Fecha de fin: {{ tarea[4] }} (Retrasada)</li>
+        {% else %}
+            <li>No hay tareas retrasadas.</li>
+        {% endfor %}
+    </ul>
+</div>
+
+{% endblock %}
